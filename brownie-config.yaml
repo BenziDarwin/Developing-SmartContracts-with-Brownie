@@ -1,3 +1,4 @@
 dotenv: .env
 wallets:
   from_key: ${RINKEBY_PRIVATE_KEY}
+tracker: -1

@@ -1,11 +1,13 @@
-from brownie import accounts, config, SimpleStorage
+from brownie import accounts, config, SimpleStorage, network
 import os
 
 
 def deploy_simple_storage():
 
     # To use a specific account
-    account = accounts.load("metamask")
+    # account = accounts.load("metamask")
+
+    account = chooseAccount()
 
     # Identifying the account
     # account = accounts[0]
@@ -37,6 +39,14 @@ def deploy_simple_storage():
     # account = accounts.add(config["wallets"]["from_key"])
     # print(account)
     # print(simple_storage_object)
+
+
+def chooseAccount():
+    if network.show_active() == "development":
+        return accounts[0]
+
+    else:
+        return accounts.add(config["wallets"]["from_key"])
 
 
 def main():
